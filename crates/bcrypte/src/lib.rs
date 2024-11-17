@@ -4,12 +4,18 @@ use bcrypt::{DEFAULT_COST, hash, verify};
 
 rustler::init!("bcrypte", [
         hash_1,
+        hash_2,
         verify_2,
     ]);
 
 #[rustler::nif(schedule = "DirtyCpu")]
 fn hash_1(password: String) -> String {
     hash(password, DEFAULT_COST).unwrap().to_string()
+}
+
+#[rustler::nif(schedule = "DirtyCpu")]
+fn hash_2(password: String, cost: u32) -> String {
+    hash(password, cost).unwrap().to_string()
 }
 
 #[rustler::nif(schedule = "DirtyCpu")]
