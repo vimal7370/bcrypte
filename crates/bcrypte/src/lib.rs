@@ -2,11 +2,7 @@ extern crate rustler;
 extern crate bcrypt;
 use bcrypt::{DEFAULT_COST, hash, verify};
 
-rustler::init!("bcrypte", [
-        hash_1,
-        hash_2,
-        verify_2,
-    ]);
+rustler::init!("bcrypte");
 
 #[rustler::nif(schedule = "DirtyCpu")]
 fn hash_1(password: String) -> String {
