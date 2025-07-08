@@ -8,7 +8,7 @@ mkdir -p ./priv;
 
 rm -f priv/*;
 cargo build --manifest-path=crates/bcrypte/Cargo.toml --release;
-[ -f "crates/bcrypte/target/release/libbcrypte.so" ] &&mv crates/bcrypte/target/release/libbcrypte.so priv/.;
-[ -f "crates/bcrypte/target/release/libbcrypte.dylib" ] &&mv crates/bcrypte/target/release/libbcrypte.dylib priv/.;
+[ -f "crates/bcrypte/target/release/libbcrypte.so" ] && mv crates/bcrypte/target/release/libbcrypte.so priv/.;
+[ -f "crates/bcrypte/target/release/libbcrypte.dylib" ] && mv crates/bcrypte/target/release/libbcrypte.dylib priv/. && cd ./priv && ln -s libbcrypte.dylib libbcrypte.so;
 
 cd $JPRE_COMPILE_PWD
