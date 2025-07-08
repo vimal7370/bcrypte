@@ -16,10 +16,7 @@
 
 init() ->
     PrivDir = code:priv_dir(?MODULE),
-    LibName = case os:type() of
-        {unix, darwin} -> "libbcrypte.dylib";  % macOS
-        _ -> "libbcrypte.so"                   % Linux and others
-    end,
+    LibName = "libbcrypte",
     erlang:load_nif(filename:append(PrivDir, LibName), 0).
 
 -type password() :: unicode:unicode_binary().
